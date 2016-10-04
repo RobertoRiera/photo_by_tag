@@ -1,5 +1,5 @@
 import requests
-import LinkFinder
+import LinkManager
 
 
 class ChictopiaDownloader:
@@ -10,7 +10,7 @@ class ChictopiaDownloader:
         self.page_range(init, end)
 
     def page_range(self, init, end):
-        parser = LinkFinder.ChictopiaLinkFinder()
+        parser = LinkManager.ChictopiaLinkFinder()
         for i in range(init, end):
             html_page = requests.get(self.url + '/' + str(i))
             parser.feed(html_page.text)
