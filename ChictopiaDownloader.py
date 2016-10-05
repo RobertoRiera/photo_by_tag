@@ -1,17 +1,25 @@
+import FileManager
 import requests
-import LinkManager
+from LinkManager import LinkManager
+from time import sleep
 
 
 class ChictopiaDownloader:
-    url = ''
+    base_url = 'http://www.chictopia.com/browse/new_photos/approve'
+    tags = set()
+    special_links = set()
+    parser = None
 
-    def __init__(self, url, init, end):
-        self.url = url
+    def __init__(self, init, end):
+        FileManager.FileManager().create_tag_directory()
+        self.tags = FileManager.get_tags_from_file()
+        self.parser = LinkManager()
         self.page_range(init, end)
+        self.special_links = self.parser.get_special_links(self.tags)
 
     def page_range(self, init, end):
-        parser = LinkManager.ChictopiaLinkFinder()
         for i in range(init, end):
-            html_page = requests.get(self.url + '/' + str(i))
-            parser.feed(html_page.text)
-        return parser.get_links()
+            actual_url = self.base_url + '/' + str(i)
+            html = requests.get(actual_url).text
+            sleep(0.1)
+            self.parser.feed(html)

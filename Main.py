@@ -1,9 +1,7 @@
-import FileManager
-from LinkManager import LinkManager
+import ChictopiaDownloader
+import ImageDownloader
 
-tags = FileManager.get_tags_from_file()
-link_manager = LinkManager()
-special_links = LinkManager.get_special_links(link_manager, tags)
+ChictopiaDownloader.ChictopiaDownloader(1, 5)
 
-
-url = 'http://www.chictopia.com/browse/new_photos/approve'
+# url = 'http://www.chictopia.com/photo/show/1173526-Firestarter-cowboy-stetson-boots-mustard-v-neck-forever-21-dress-black-beanie-hat'
+# ImageFinder.ImageFinder(url)

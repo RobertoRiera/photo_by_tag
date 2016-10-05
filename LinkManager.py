@@ -20,9 +20,9 @@ class LinkManager(HTMLParser):
         return self.all_links
 
     def get_special_links(self, tags):
-        dictionary={}
+        dictionary = {}
         for tag in tags:
             for link in self.all_links:
-                if tag in link:
-                    dictionary[tag]=[].append(link)
-        return self.special_links
+                if tag[:-1] in link[35:]:
+                    dictionary[tag[:-1]] = [].append(link)
+                    print(tag[:-1] + " ----> " + link)
