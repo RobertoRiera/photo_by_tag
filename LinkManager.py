@@ -1,5 +1,6 @@
 from html.parser import HTMLParser
 from urllib.parse import urljoin
+import ImageDownloader
 
 
 class LinkManager(HTMLParser):
@@ -20,9 +21,8 @@ class LinkManager(HTMLParser):
         return self.all_links
 
     def get_special_links(self, tags):
-        dictionary = {}
         for tag in tags:
             for link in self.all_links:
                 if tag[:-1] in link[35:]:
-                    dictionary[tag[:-1]] = [].append(link)
-                    print(tag[:-1] + " ----> " + link)
+                    print(link, tag[:-1], link[36:43])
+                    ImageDownloader.ImageDownloader(link, tag[:-1], link[36:43])

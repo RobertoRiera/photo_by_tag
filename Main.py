@@ -1,7 +1,12 @@
 import ChictopiaDownloader
-import ImageDownloader
+import time
 
-ChictopiaDownloader.ChictopiaDownloader(1, 5)
 
-# url = 'http://www.chictopia.com/photo/show/1173526-Firestarter-cowboy-stetson-boots-mustard-v-neck-forever-21-dress-black-beanie-hat'
-# ImageFinder.ImageFinder(url)
+def tiempo():
+    return int(round(time.time() * 1000))
+
+tiempo_empezar = tiempo()
+ChictopiaDownloader.ChictopiaDownloader(1, 2)
+tiempo_final = tiempo()
+
+print(tiempo_final-tiempo_empezar)

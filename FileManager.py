@@ -17,12 +17,9 @@ class FileManager:
                     os.mkdir(os.path.join(tag_path, tag[:-1]))
         else:
             os.mkdir('Photos')
-            tags = self.special_tags
-            for tag in tags:
-                if not os.path.exists(os.path.join(tag_path, tag)):
-                    os.mkdir(os.path.join(tag_path, tag[:-1]))
+            for tag in self.special_tags:
+                os.mkdir(os.path.join(tag_path, tag[:-1]))
 
 
 def get_tags_from_file():
-    special_tags = open('tags.txt', 'r')
-    return special_tags
+    return open('tags.txt', 'r')
