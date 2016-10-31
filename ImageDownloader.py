@@ -25,4 +25,3 @@ class ImageDownloader(HTMLParser):
                 if attr[0] == 'src' and '400.jpg' in attr[1]:
                     path = 'Photos/' + self.tag + '/' + self.name + '.jpg'
                     urllib.request.urlretrieve(attr[1], path)
-

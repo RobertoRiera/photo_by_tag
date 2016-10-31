@@ -1,6 +1,7 @@
 # coding=utf-8
-import cv
 import math
+
+import cv
 import numpy as np
 import cv2
 
@@ -20,10 +21,9 @@ class Kind_wraping:
 
 
 class Normalization:
-    def __init__(self):
-        self.norm_image = None
-        self.dist_eyes = None
-        self.angle_eyes = None
+    norm_image = None
+    dist_eyes = None
+    angle_eyes = None
 
     def normalize_gray_img(self, grey_img, lex, ley, rex, rey, kind=Kind_wraping.HS):
         [img_padding, lex, ley, rex, rey, distancia_entre_ojos] = Utils4Normalization.add_padding(grey_img, lex, ley,
@@ -176,20 +176,19 @@ class CWarpingImage:
             return gray_img_resize_eliptica
         return grey_img_resize
 
-
 ## ejemplo de uso
-#imagen = cv2.imread('/home/pedro/Descargas/IMG_20160221_111528.jpg')
-#from detector_factory import Detector_factory
-#dec = Detector_factory.init()
-#roi = dec.detect(imagen) # puede haber mas de una cara
-#points = dec.predict_points(imagen, roi[0])
-#r = dec.calculate_centroide(points, range(42, 48))
-#i = dec.calculate_centroide(points, range(36, 42))
-#gray_image = cv2.cvtColor(imagen, cv2.COLOR_BGR2GRAY)
-#normalizator = FaceNormalization()
-#normalizator.normalize_gray_img(gray_image, i[0], i[1], r[0], r[1], Kind_wraping.HS)
-#cv2.imwrite('normaHS.jpeg', normalizator.norm_image)
-#print(str(normalizator.angle_eyes) + ' ' + str(normalizator.dist_eyes) + '\n')
-#normalizator.normalize_gray_img(gray_image, i[0], i[1], r[0], r[1], Kind_wraping.FACE)
-#cv2.imwrite('normaface.jpeg', normalizator.norm_image)
-#print(str(normalizator.angle_eyes) + ' ' + str(normalizator.dist_eyes) + '\n')
+# imagen = cv2.imread('/home/pedro/Descargas/IMG_20160221_111528.jpg')
+# from detector_factory import Detector_factory
+# dec = Detector_factory.init()
+# roi = dec.detect(imagen) # puede haber mas de una cara
+# points = dec.predict_points(imagen, roi[0])
+# r = dec.calculate_centroide(points, range(42, 48))
+# i = dec.calculate_centroide(points, range(36, 42))
+# gray_image = cv2.cvtColor(imagen, cv2.COLOR_BGR2GRAY)
+# normalizator = FaceNormalization()
+# normalizator.normalize_gray_img(gray_image, i[0], i[1], r[0], r[1], Kind_wraping.HS)
+# cv2.imwrite('normaHS.jpeg', normalizator.norm_image)
+# print(str(normalizator.angle_eyes) + ' ' + str(normalizator.dist_eyes) + '\n')
+# normalizator.normalize_gray_img(gray_image, i[0], i[1], r[0], r[1], Kind_wraping.FACE)
+# cv2.imwrite('normaface.jpeg', normalizator.norm_image)
+# print(str(normalizator.angle_eyes) + ' ' + str(normalizator.dist_eyes) + '\n')
